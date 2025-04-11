@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    kubernetes {
+      label 'jenkins-agent'
+      defaultContainer 'docker'
+    }
+  }
 
   environment {
     IMAGE_NAME = "eeacms/plone-backend"
