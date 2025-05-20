@@ -22,6 +22,8 @@ pipeline {
             sh '''docker -v'''
             sh '''hostname'''
             // sh '''docker ps -a | grep dind'''
+            sh 'ls -l && pwd'
+            
             sh "docker build --no-cache -t ${IMAGE_NAME}:${TAG} ."
             sh '''./test/run.sh ${IMAGE_NAME}:${TAG}'''
           } finally {
