@@ -24,7 +24,7 @@ pipeline {
             // sh '''docker ps -a | grep dind'''
             sh 'ls -l && pwd'
             
-            sh "docker build --no-cache -t ${IMAGE_NAME}:${TAG} ."
+            sh "docker build --no-cache -t ${IMAGE_NAME}:${TAG}"
             sh '''./test/run.sh ${IMAGE_NAME}:${TAG}'''
           } finally {
             sh script: "docker rmi ${IMAGE_NAME}:${TAG}", returnStatus: true
